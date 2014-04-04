@@ -1,1 +1,1 @@
-##Vagrant file + bootstrap + chef cookbook LAMP
+##Vagrant file + shell bootstrap + chef cookbook LAMP
