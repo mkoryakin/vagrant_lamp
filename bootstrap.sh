@@ -8,3 +8,4 @@
 cd /vagrant
 curl -L https://www.opscode.com/chef/install.sh | bash
 chef-solo -v
+chef-solo -c chef-repo/solo.rb -j chef-repo/web.json
