@@ -13,6 +13,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "chef/debian-7.4"
   config.vm.hostname = "vagrant2.example.com"
   config.vm.provision :shell, :path => "bootstrap.sh"
+  config.vm.provision "chef_solo" do |chef|
+    chef.cookbooks_path = "chef-repo/cookbooks"
+    chef.json = {
+      "mysql" => {
+        "server_root_password" => "808052769e2c6d909027a2905b224bad",
+        "server_debian_password" => "569d1ed2d46870cc020fa87be83af98d",
+        "server_repl_password" => "476911180ee92a2ee5a471f33340f6f4"
+       },
+      "lampapp" => {
+        "db_password" => "212b09752d173876a84d374333ae1ffe",
+        "server_name" => "vagrant2.example.com"
+      },
+      "run_list" => [
+        "recipe[apt]",
+        "recipe[lampapp]"
+      ]
+    }
+  end
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   # config.vm.box_url = "http://domain.com/path/to/above.box"
