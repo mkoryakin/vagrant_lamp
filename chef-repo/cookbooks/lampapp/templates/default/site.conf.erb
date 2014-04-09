@@ -17,4 +17,7 @@
     AllowOverride None
   </Directory>
 
+  CustomLog /var/log/apache2/<%= @params[:server_name] %>-access.log combined
+  ErrorLog /var/log/apache2/<%= @params[:server_name] %>-error.log
+
 </VirtualHost>
